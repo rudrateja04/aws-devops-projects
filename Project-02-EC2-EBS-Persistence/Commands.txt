@@ -1,0 +1,8 @@
+lsblk
+sudo file -s /dev/nvme1n1
+sudo mkfs -t ext4 /dev/nvme1n1
+sudo mkdir -p /mnt/mybackup
+sudo mount /dev/nvme1n1 /mnt/mybackup
+df -h
+sudo touch /mnt/mybackup/testfile.txt
+sudo reboot
