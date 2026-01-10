@@ -1,13 +1,16 @@
-# 📦 Project 02: EC2 + EBS Persistence & Snapshot
+# Project 02: EC2 with EBS Persistence
 
-## 📌 Project Overview
-This project demonstrates how to attach an Amazon EBS volume to an EC2 instance, mount it on the operating system, verify data persistence after a reboot, and create an EBS snapshot for backup and recovery.
+## About This Project
+In this project, I worked with Amazon EC2 and Amazon EBS to understand how
+persistent storage works in AWS.
 
-The objective is to understand **persistent storage, data durability, and backup mechanisms** in AWS.
+I attached an additional EBS volume to an EC2 instance, mounted it,
+stored data on it, rebooted the instance, and verified that the data
+was still available. I also created an EBS snapshot as a backup.
 
 ---
 
-## 🛠️ AWS Services Used
+## AWS Services Used
 - Amazon EC2
 - Amazon EBS
 - EBS Snapshots
@@ -16,74 +19,40 @@ The objective is to understand **persistent storage, data durability, and backup
 
 ---
 
-## 🏗️ Architecture
-EC2 Instance  
-↳ Attached EBS Volume  
-↳ Mounted at `/mnt/mybackup`  
-↳ Snapshot stored and managed by AWS  
+## What I Did
+1. Launched an EC2 instance using Amazon Linux
+2. Created and attached an EBS volume to the EC2 instance
+3. Mounted the EBS volume to /mnt/mybackup
+4. Created a file on the mounted volume
+5. Rebooted the EC2 instance
+6. Verified that the file still existed after reboot
+7. Created an EBS snapshot for backup
+
+All commands used are available in commands.txt.  
+Screenshots of each step are available in the screenshots folder.
 
 ---
 
-## ⚙️ Implementation Summary
-
-### 1️⃣ EC2 Instance Setup
-- Launched an EC2 instance using **Amazon Linux 2023**
-- Instance type: **t3.micro**
-- Connected securely using SSH key-based authentication
-- Security Group allows:
-  - SSH (port 22)
-  - HTTP (port 80)
-
-📸 Screenshot:  
-`screenshots/ebs-volume-attached-to-ec2.png`
+## Result
+The data stored on the EBS volume remained intact even after rebooting
+the EC2 instance. This confirms that EBS provides persistent storage
+independent of the EC2 lifecycle.
 
 ---
 
-### 2️⃣ EBS Volume Attachment
-- Created an EBS volume in the same Availability Zone as the EC2 instance
-- Attached the volume to the running EC2 instance
-- Verified the new disk using `lsblk`
-
-📸 Screenshot:  
-`screenshots/lsblk-showing-ebs-disk.png`
+## What I Learned
+- How to attach and mount EBS volumes
+- Difference between EC2 lifecycle and EBS lifecycle
+- How data persistence works in AWS
+- How to create backups using EBS snapshots
 
 ---
 
-### 3️⃣ Mounting the EBS Volume
-- Created a mount directory `/mnt/mybackup`
-- Mounted the EBS volume to the directory
-- Verified successful mount using `df -h`
-
-📸 Screenshot:  
-`screenshots/ebs-mounted-at-mnt-mybackup.png`
-
-📄 All commands used in this project are documented in **`commands.txt`**
+## Cleanup
+After completing the project, all resources were stopped or terminated
+to avoid unnecessary AWS charges.
 
 ---
 
-### 4️⃣ Persistence Test (Core Objective)
-- Created a test file on the mounted EBS volume
-- Rebooted the EC2 instance
-- Verified that the file still existed after reboot
-
-📸 Screenshot:  
-`screenshots/file-exists-after-reboot.png`
-
-✅ This confirms that **EBS data persists independently of the EC2 instance lifecycle**.
-
----
-
-### 5️⃣ EBS Snapshot (Backup & Recovery)
-- Created an EBS snapshot to capture the state of the volume
-- Verified snapshot status as **Completed**
-- Demonstrates backup and recovery capability
-
-📸 Screenshot:  
-`screenshots/ebs-snapshot-created.png`
-
-📸 Optional restore test:  
-`screenshots/ebs-volume-created-from-snapshot.png`
-
----
-
-## 📂 Project Structure
+## Author
+Rudra Teja
