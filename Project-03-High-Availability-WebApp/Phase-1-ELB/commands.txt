@@ -1,0 +1,2 @@
+User Data was used to install and configure Apache automatically
+during EC2 launch.

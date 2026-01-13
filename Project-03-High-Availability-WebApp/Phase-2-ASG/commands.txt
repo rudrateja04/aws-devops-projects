@@ -1,0 +1,2 @@
+User Data was used in a Launch Template to automatically
+configure Apache on EC2 instances created by the Auto Scaling Group.
