@@ -1,0 +1,15 @@
+sudo yum update -y
+sudo yum install mysql -y
+
+mysql -h <rds-endpoint> -u admin -p
+
+CREATE DATABASE appdb;
+USE appdb;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100)
+);
+
+INSERT INTO users (name) VALUES ('Rudra');
+SELECT * FROM users;
